@@ -1,0 +1,55 @@
+exit=1
+--stdout--
+
+--stderr--
+count=268435457 total=16
+=================================================================
+==3949==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x782adbbe0020 at pc 0x7c0add9280c3 bp 0x7ffd33cd01f0 sp 0x7ffd33ccf9a8
+WRITE of size 16 at 0x782adbbe0020 thread T0
+    #0 0x7c0add9280c2 in memset ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors_memintrinsics.inc:89
+    #1 0x000000401514 in main /home/aniket23/cpp_memory_safety_lab/vulns/04_integer_overflow/vuln.cpp:27
+    #2 0x7c0adc82a600 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:59
+    #3 0x7c0adc82a717 in __libc_start_main_impl ../csu/libc-start.c:360
+    #4 0x000000401214 in _start (/home/aniket23/cpp_memory_safety_lab/build/bin/case04_vuln_asan+0x401214) (BuildId: 55db874733d44e78473f264c56a9e6ecbd17d76c)
+
+0x782adbbe0020 is located 0 bytes after 16-byte region [0x782adbbe0010,0x782adbbe0020)
+allocated by thread T0 here:
+    #0 0x7c0add92b60f in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:67
+    #1 0x000000401494 in main /home/aniket23/cpp_memory_safety_lab/vulns/04_integer_overflow/vuln.cpp:23
+    #2 0x7c0adc82a600 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:59
+    #3 0x7c0adc82a717 in __libc_start_main_impl ../csu/libc-start.c:360
+    #4 0x000000401214 in _start (/home/aniket23/cpp_memory_safety_lab/build/bin/case04_vuln_asan+0x401214) (BuildId: 55db874733d44e78473f264c56a9e6ecbd17d76c)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/aniket23/cpp_memory_safety_lab/vulns/04_integer_overflow/vuln.cpp:27 in main
+Shadow bytes around the buggy address:
+  0x782adbbdfd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x782adbbdfe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x782adbbdfe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x782adbbdff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x782adbbdff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x782adbbe0000: fa fa 00 00[fa]fa fa fa fa fa fa fa fa fa fa fa
+  0x782adbbe0080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x782adbbe0100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x782adbbe0180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x782adbbe0200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x782adbbe0280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==3949==ABORTING

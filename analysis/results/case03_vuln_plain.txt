@@ -1,0 +1,6 @@
+exit=-6
+--stdout--
+
+--stderr--
+error path taken
+free(): double free detected in tcache 2

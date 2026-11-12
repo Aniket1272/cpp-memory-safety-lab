@@ -1,0 +1,2 @@
+/home/aniket23/cpp_memory_safety_lab/vulns/01_stack_overflow/vuln.cpp:10:5: warning: Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-119 [clang-analyzer-security.insecureAPI.strcpy]
+/home/aniket23/cpp_memory_safety_lab/vulns/01_stack_overflow/vuln.cpp:16:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]

@@ -1,0 +1,6 @@
+exit=0
+--stdout--
+count=4 bytes=64
+done
+
+--stderr--

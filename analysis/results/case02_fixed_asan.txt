@@ -1,0 +1,6 @@
+exit=0
+--stdout--
+in scope: user=alice privilege=0
+session closed
+
+--stderr--

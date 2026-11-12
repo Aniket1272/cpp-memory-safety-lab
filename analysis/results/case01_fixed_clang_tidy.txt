@@ -1,0 +1,2 @@
+/home/aniket23/cpp_memory_safety_lab/vulns/01_stack_overflow/fixed.cpp:11:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]
+/home/aniket23/cpp_memory_safety_lab/vulns/01_stack_overflow/fixed.cpp:21:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]

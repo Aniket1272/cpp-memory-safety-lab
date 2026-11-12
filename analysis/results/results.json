@@ -1,0 +1,79 @@
+[
+  {
+    "case": "Stack buffer overflow",
+    "cwe": "CWE-121",
+    "vuln_cppcheck": [],
+    "vuln_clang_tidy": [
+      "/home/aniket23/cpp_memory_safety_lab/vulns/01_stack_overflow/vuln.cpp:10:5: warning: Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-119 [clang-analyzer-security.insecureAPI.strcpy]",
+      "/home/aniket23/cpp_memory_safety_lab/vulns/01_stack_overflow/vuln.cpp:16:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]"
+    ],
+    "fixed_cppcheck": [],
+    "fixed_clang_tidy": [
+      "/home/aniket23/cpp_memory_safety_lab/vulns/01_stack_overflow/fixed.cpp:11:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]",
+      "/home/aniket23/cpp_memory_safety_lab/vulns/01_stack_overflow/fixed.cpp:21:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]"
+    ],
+    "cppcheck": "Missed",
+    "clang_tidy": "Detected (+1 unrelated)",
+    "plain": "SIGSEGV",
+    "asan": "stack-buffer-overflow",
+    "ubsan": "Missed",
+    "fixed": "Clean"
+  },
+  {
+    "case": "Use after free",
+    "cwe": "CWE-416",
+    "vuln_cppcheck": [],
+    "vuln_clang_tidy": [
+      "/home/aniket23/cpp_memory_safety_lab/vulns/02_use_after_free/vuln.cpp:28:65: warning: Use of memory after it is freed [clang-analyzer-unix.Malloc]"
+    ],
+    "fixed_cppcheck": [],
+    "fixed_clang_tidy": [],
+    "cppcheck": "Missed",
+    "clang_tidy": "Detected",
+    "plain": "exit 0, no crash",
+    "asan": "heap-use-after-free",
+    "ubsan": "Missed",
+    "fixed": "Clean"
+  },
+  {
+    "case": "Double free",
+    "cwe": "CWE-415",
+    "vuln_cppcheck": [],
+    "vuln_clang_tidy": [
+      "/home/aniket23/cpp_memory_safety_lab/vulns/03_double_free/vuln.cpp:16:5: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]",
+      "/home/aniket23/cpp_memory_safety_lab/vulns/03_double_free/vuln.cpp:19:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]",
+      "/home/aniket23/cpp_memory_safety_lab/vulns/03_double_free/vuln.cpp:24:5: warning: Use of memory after it is freed [clang-analyzer-unix.Malloc]"
+    ],
+    "fixed_cppcheck": [],
+    "fixed_clang_tidy": [
+      "/home/aniket23/cpp_memory_safety_lab/vulns/03_double_free/fixed.cpp:9:5: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]",
+      "/home/aniket23/cpp_memory_safety_lab/vulns/03_double_free/fixed.cpp:12:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]"
+    ],
+    "cppcheck": "Missed",
+    "clang_tidy": "Detected (+2 unrelated)",
+    "plain": "SIGABRT (glibc: double free detected)",
+    "asan": "attempting double-free",
+    "ubsan": "Missed",
+    "fixed": "Clean"
+  },
+  {
+    "case": "Integer overflow -> heap overflow",
+    "cwe": "CWE-190/122",
+    "vuln_cppcheck": [],
+    "vuln_clang_tidy": [
+      "/home/aniket23/cpp_memory_safety_lab/vulns/04_integer_overflow/vuln.cpp:14:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]",
+      "/home/aniket23/cpp_memory_safety_lab/vulns/04_integer_overflow/vuln.cpp:21:5: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]"
+    ],
+    "fixed_cppcheck": [],
+    "fixed_clang_tidy": [
+      "/home/aniket23/cpp_memory_safety_lab/vulns/04_integer_overflow/fixed.cpp:15:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]",
+      "/home/aniket23/cpp_memory_safety_lab/vulns/04_integer_overflow/fixed.cpp:22:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]"
+    ],
+    "cppcheck": "Missed",
+    "clang_tidy": "Missed (+2 unrelated)",
+    "plain": "SIGSEGV",
+    "asan": "heap-buffer-overflow",
+    "ubsan": "Missed",
+    "fixed": "Clean"
+  }
+]

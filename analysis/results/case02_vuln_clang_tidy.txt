@@ -1,0 +1,1 @@
+/home/aniket23/cpp_memory_safety_lab/vulns/02_use_after_free/vuln.cpp:28:65: warning: Use of memory after it is freed [clang-analyzer-unix.Malloc]

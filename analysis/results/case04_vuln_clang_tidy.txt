@@ -1,0 +1,2 @@
+/home/aniket23/cpp_memory_safety_lab/vulns/04_integer_overflow/vuln.cpp:14:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]
+/home/aniket23/cpp_memory_safety_lab/vulns/04_integer_overflow/vuln.cpp:21:5: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]

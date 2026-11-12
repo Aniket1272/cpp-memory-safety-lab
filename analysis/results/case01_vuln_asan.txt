@@ -1,0 +1,54 @@
+exit=1
+--stdout--
+
+--stderr--
+=================================================================
+==3923==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7a7d9cef0030 at pc 0x7e7da00bd2a9 bp 0x7ffed8ac8660 sp 0x7ffed8ac7e18
+WRITE of size 65 at 0x7a7d9cef0030 thread T0
+    #0 0x7e7da00bd2a8 in strcpy ../../../../src/libsanitizer/asan/asan_interceptors.cpp:575
+    #1 0x00000040134f in greet /home/aniket23/cpp_memory_safety_lab/vulns/01_stack_overflow/vuln.cpp:10
+    #2 0x0000004014da in main /home/aniket23/cpp_memory_safety_lab/vulns/01_stack_overflow/vuln.cpp:19
+    #3 0x7e7d9f02a600 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:59
+    #4 0x7e7d9f02a717 in __libc_start_main_impl ../csu/libc-start.c:360
+    #5 0x0000004011f4 in _start (/home/aniket23/cpp_memory_safety_lab/build/bin/case01_vuln_asan+0x4011f4) (BuildId: 0c15eb24995b579e173033aaa5677f0f2b03bbfa)
+
+Address 0x7a7d9cef0030 is located in stack of thread T0 at offset 48 in frame
+    #0 0x0000004012c5 in greet /home/aniket23/cpp_memory_safety_lab/vulns/01_stack_overflow/vuln.cpp:8
+
+  This frame has 1 object(s):
+    [32, 48) 'buf' (line 9) <== Memory access at offset 48 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/aniket23/cpp_memory_safety_lab/vulns/01_stack_overflow/vuln.cpp:10 in greet
+Shadow bytes around the buggy address:
+  0x7a7d9ceefd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7a7d9ceefe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7a7d9ceefe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7a7d9ceeff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7a7d9ceeff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7a7d9cef0000: f1 f1 f1 f1 00 00[f3]f3 00 00 00 00 00 00 00 00
+  0x7a7d9cef0080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7a7d9cef0100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7a7d9cef0180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7a7d9cef0200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7a7d9cef0280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==3923==ABORTING

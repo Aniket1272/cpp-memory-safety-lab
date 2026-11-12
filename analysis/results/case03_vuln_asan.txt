@@ -1,0 +1,32 @@
+exit=1
+--stdout--
+
+--stderr--
+error path taken
+=================================================================
+==3940==ERROR: AddressSanitizer: attempting double-free on 0x7303acbe0040 in thread T0:
+    #0 0x76d3ae92a3ff in free ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:51
+    #1 0x0000004012f1 in cleanup /home/aniket23/cpp_memory_safety_lab/vulns/03_double_free/vuln.cpp:10
+    #2 0x00000040143d in main /home/aniket23/cpp_memory_safety_lab/vulns/03_double_free/vuln.cpp:24
+    #3 0x76d3ad82a600 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:59
+    #4 0x76d3ad82a717 in __libc_start_main_impl ../csu/libc-start.c:360
+    #5 0x000000401214 in _start (/home/aniket23/cpp_memory_safety_lab/build/bin/case03_vuln_asan+0x401214) (BuildId: 049b9f6f8494cc3fe4ceeeca6b07440c0895089c)
+
+0x7303acbe0040 is located 0 bytes inside of 32-byte region [0x7303acbe0040,0x7303acbe0060)
+freed by thread T0 here:
+    #0 0x76d3ae92a3ff in free ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:51
+    #1 0x0000004012f1 in cleanup /home/aniket23/cpp_memory_safety_lab/vulns/03_double_free/vuln.cpp:10
+    #2 0x000000401431 in main /home/aniket23/cpp_memory_safety_lab/vulns/03_double_free/vuln.cpp:20
+    #3 0x76d3ad82a600 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:59
+    #4 0x76d3ad82a717 in __libc_start_main_impl ../csu/libc-start.c:360
+    #5 0x000000401214 in _start (/home/aniket23/cpp_memory_safety_lab/build/bin/case03_vuln_asan+0x401214) (BuildId: 049b9f6f8494cc3fe4ceeeca6b07440c0895089c)
+
+previously allocated by thread T0 here:
+    #0 0x76d3ae92b60f in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:67
+    #1 0x000000401312 in main /home/aniket23/cpp_memory_safety_lab/vulns/03_double_free/vuln.cpp:14
+    #2 0x76d3ad82a600 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:59
+    #3 0x76d3ad82a717 in __libc_start_main_impl ../csu/libc-start.c:360
+    #4 0x000000401214 in _start (/home/aniket23/cpp_memory_safety_lab/build/bin/case03_vuln_asan+0x401214) (BuildId: 049b9f6f8494cc3fe4ceeeca6b07440c0895089c)
+
+SUMMARY: AddressSanitizer: double-free /home/aniket23/cpp_memory_safety_lab/vulns/03_double_free/vuln.cpp:10 in cleanup
+==3940==ABORTING

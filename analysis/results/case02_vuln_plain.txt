@@ -1,0 +1,6 @@
+exit=0
+--stdout--
+before free: user=alice privilege=0
+after  free: user=�X privilege=0
+
+--stderr--
